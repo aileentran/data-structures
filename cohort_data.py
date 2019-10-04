@@ -1,6 +1,6 @@
 """Functions to parse a file containing student data."""
 
-# file = open("cohort_data.txt")
+global_file = open("cohort_data.txt")
 
 #     for line in file:
 #         line = line.rstrip()
@@ -208,6 +208,15 @@ def find_cohort_by_student_name(student_list):
     """
 
     # Code goes here
+    file = open("cohort_data.txt")
+    student_list = all_students_tuple_list(file)
+
+    student_name = input("Who are you looking for? ")
+
+    for student in student_list:
+        if student_name in student[0]:
+            return student[-1]
+
 
     return "Student not found."
 
@@ -230,7 +239,7 @@ def find_name_duplicates(filename):
 
     duplicate_names = set()
 
-    # Code goes here
+    
 
     return duplicate_names
 
@@ -269,7 +278,10 @@ def find_house_members_by_student_name(student_list):
 #############################################################################
 # Here is some useful code to run these functions without doctests!
 
-# find_cohort_by_student_name(all_students_data)
+all_students_data = all_students_tuple_list(global_file)
+
+
+print(find_cohort_by_student_name(all_students_data))
 # find_house_members_by_student_name(all_students_data)
 
 
